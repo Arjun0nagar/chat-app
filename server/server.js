@@ -51,11 +51,14 @@ app.use("/api/messages",messageRouter);
 
 
 // Connect DB
-try {
-  await connectDB();
-  const PORT = process.env.PORT || 5000;
-  server.listen(PORT, () => console.log(`Server is live on ${PORT}`));
-} catch (err) {
-  console.error("Failed to connect DB, server not started:", err);
-  process.exit(1);
+
+await connectDB();
+
+if(process.env.NODE_ENV==="production"){
+    const PORT = process.env.PORT || 5000;
+    server.listen(PORT, () => console.log(`Server is live on ${PORT}`));
 }
+
+
+// Export server for vercel
+export default server
