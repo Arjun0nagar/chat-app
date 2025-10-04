@@ -12,7 +12,7 @@ function App(){
   const {authUser} = useContext(AuthContext);
 
   return (
-    <div className="bg-[url('./bgImage.jpg')] bg-contain">
+    <div className="bg-[url('/bgImage.jpg')] bg-contain">
       <Toaster />
       <Routes>
         <Route path='/' element={ authUser ? <HomePage/> : <Navigate to="/login"/>}/>
